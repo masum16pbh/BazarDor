@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { I_Item } from "../type"
 import { AiOutlineCaretDown } from "react-icons/ai";
 import { AiOutlineCaretUp } from "react-icons/ai";
@@ -21,7 +22,7 @@ export default function ItemCard(product: I_Item) {
             unitBn = ""
     }
     
-    function Change(){
+ function Change(){
         const pctBn= Math.abs(Number(product.change.pct)).toLocaleString("bn")
         if(product.change.dir==="up"){
             return(
@@ -41,6 +42,7 @@ export default function ItemCard(product: I_Item) {
     }
     return (
         <>
+        <Link href={`/details/${product.id}`}>
             <div className="w-full border border-[#E1E8E1] bg-white rounded-2xl p-2">
                 <div className="flex gap-2 items-center">
                     <div className="text-center bg-[#F0F5F0] rounded-xl w-12 h-12 items-center text-4xl">
@@ -65,6 +67,7 @@ export default function ItemCard(product: I_Item) {
                     </div>
                 </div>
             </div>
+            </Link>
         </>
     )
 }

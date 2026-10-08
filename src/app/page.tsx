@@ -10,7 +10,7 @@ export default async function Home() {
   const products:I_Item[] = data
 
   return (
-    <div className="flex flex-col justify-center bg-zinc-50 font-sans dark:bg-black">
+    <div className="flex flex-col justify-center container mx-auto ">
       
       <div className="grid grid-cols-3 gap-2">
         {products.map(product =><ItemCard key={product.id} {...product} />)}

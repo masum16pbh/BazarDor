@@ -36,7 +36,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body 
       lang="bn"
-      className={`${notoSerifBengali.variable} min-h-full flex flex-col`}>{children}</body>
+      
+      className={`${notoSerifBengali.variable} min-h-full flex flex-col bg-[#E1E8E1]`}>{children}</body>
     </html>
   );
 }
