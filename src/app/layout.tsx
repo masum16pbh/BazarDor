@@ -1,6 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono,  Noto_Serif_Bengali  } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
+
+const notoSerifBengali = Noto_Serif_Bengali({
+  subsets: ["bengali"],
+  variable: "--font-noto-serif-bengali",
+});
+
+const solaimanLipi = localFont({
+  src: "../public/SolaimanLipi.ttf",
+  variable: "--font-solaiman-lipi",
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,10 +31,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      lang="bn"
+      // className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body 
+      lang="bn"
+      className={`${notoSerifBengali.variable} min-h-full flex flex-col`}>{children}</body>
     </html>
   );
 }
