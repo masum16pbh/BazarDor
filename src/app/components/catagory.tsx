@@ -6,9 +6,13 @@ interface Icatagory{
      nameBn : string;
      icon : string;
 }
+const getData=async ()=>{
+const res = await fetch('https://api.api-store.workers.dev/api/bazardor/categories',{cache:'default'})
+return res.json()
+}
 export default async function Catagorys(){
-    const res = await fetch('https://api.api-store.workers.dev/api/bazardor/categories')
-    const cats:Icatagory[] = await res.json()
+    
+    const cats:Icatagory[] = await getData()
 interface catagoryProps{
     cat: Icatagory;
 }

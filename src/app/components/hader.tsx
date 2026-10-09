@@ -30,7 +30,10 @@ export default function Hader() {
                 </div>
                 <div className=" flex gap-1.5 items-center">
                     <Link href={`/`}>মূল পাতা</Link>
+                    <Suspense fallback={<><div className="bg-white w-full"></div></>}>
+
 <Catagorys></Catagorys>
+                    </Suspense>
                 </div>
 
             </div>
