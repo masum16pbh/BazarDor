@@ -4,6 +4,7 @@ import ItemCard from "./components/productCard";
 import { notFound } from "next/navigation";
 import Footer from "./components/footer";
 
+
 export default async function Home() {
   const res = await fetch('https://api.api-store.workers.dev/api/bazardor/products/', { cache: "no-store" })
   if (!res.ok) notFound()
@@ -12,6 +13,7 @@ export default async function Home() {
 
   return (
     <div>
+      
       <div className="flex flex-col justify-center container mx-auto ">
 
         <div className="grid grid-cols-3 gap-2">

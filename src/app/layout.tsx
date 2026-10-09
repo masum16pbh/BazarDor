@@ -3,6 +3,7 @@ import { Geist, Geist_Mono,  Noto_Serif_Bengali  } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import Footer from "./components/footer";
+import Hader from "./components/hader";
 
 const notoSerifBengali = Noto_Serif_Bengali({
   subsets: ["bengali"],
@@ -38,7 +39,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body 
       lang="bn"
       
-      className={`${notoSerifBengali.variable} min-h-full flex flex-col bg-[#E1E8E1]`}>{children}
+      className={`${notoSerifBengali.variable} min-h-full flex flex-col bg-[#E1E8E1]`}>
+        <Hader></Hader>
+        {children}
       
       <Footer></Footer>
       </body>
