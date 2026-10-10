@@ -22,7 +22,7 @@ export default async function Home() {
         <div className="flex flex-col gap-1">
           <h2 className="text-xl font-bold">সব পণ্য</h2>
           <p className="text-gray-500">মোট {products.length.toLocaleString('bn')}টি পণ্য দেখানো হচ্ছে</p>
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-1 mx-2 md:mx-0 md:grid-cols-3 gap-2">
           {products.map(product => <ItemCard key={product.id} {...product} />)}
         </div>
         </div>

@@ -9,7 +9,7 @@ export default function HeroBaner(){
         <>
        <div className="flex justify-between bg-white p-2 rounded-2xl">
          <div className="flex flex-col justify-between gap-4 ">
-            <p className="text-green-400 p-1 px-2 bg-green-200 rounded-2xl w-fit">
+            <p className="text-green-700 font-bold p-1 px-2 bg-green-100 rounded-2xl w-fit">
                 <Suspense fallback="To day is">{date}</Suspense>
             </p>
             <h1 className="text-4xl font-bold">আজকের বাজারের দাম এক নজরে</h1>

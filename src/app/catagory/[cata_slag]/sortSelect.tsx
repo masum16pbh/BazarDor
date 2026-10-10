@@ -30,7 +30,7 @@ export default function Selection({ catagorys }: cataProps ) {
                     <option value="ba">দাম: বেশি থেকে কম</option>
                 </select>
             </div>
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                     {sortArr.map(cat => <ItemCard key={cat.id} {...cat}></ItemCard>)}
 
                 </div>
