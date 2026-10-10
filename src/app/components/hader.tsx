@@ -3,7 +3,7 @@ import logo from "../../public/logo-icon.png"
 import Link from "next/link";
 import { Suspense } from "react";
 import Catagorys from "./catagory";
-const date = new Date().toLocaleString("bn-BD", { dateStyle: "full" })
+export const date = new Date().toLocaleString("bn-BD", { dateStyle: "full" })
 export default function Hader() {
 
     return (
