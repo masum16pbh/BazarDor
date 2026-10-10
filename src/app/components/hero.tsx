@@ -17,7 +17,9 @@ export default function HeroBaner(){
             <Link href={'/'} className="bg-green-400 text-white p-4 rounded-2xl w-fit font-bold">সব পণ্য দেখুন</Link>
         </div>
         <div>
-            <Image src={heroImg} alt="some frute in a busket" ></Image>
+            <Image src={heroImg} alt="some frute in a busket"
+            loading="eager"
+            ></Image>
         </div>
        </div>
         </>

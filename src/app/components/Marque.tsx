@@ -5,7 +5,7 @@ import { AiOutlineCaretUp } from "react-icons/ai";
 import { AiOutlineLine } from "react-icons/ai"
 import Link from "next/link";
 export default async function MarqueeItem(){
-    const res = await fetch('https://api.api-store.workers.dev/api/bazardor/products/',{next:{revalidate:60}})
+    const res = await fetch('https://openapi.programming-hero.com/api/bazardor/products/',{next:{revalidate:60}})
 if(!res) return(<></>)
     const data = await res.json()
 const products:I_Item[] = data

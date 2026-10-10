@@ -7,7 +7,7 @@ interface Icatagory{
      icon : string;
 }
 const getData=async ()=>{
-const res = await fetch('https://api.api-store.workers.dev/api/bazardor/categories',{cache:'default'})
+const res = await fetch('https://openapi.programming-hero.com/api/bazardor/categories',{cache:'default'})
 return res.json()
 }
 export default async function Catagorys(){

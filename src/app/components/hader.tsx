@@ -25,8 +25,8 @@ export default function Hader() {
                         </div>
                     </div>
                     <div>
-                        <Link href={`/`} className="px-2 w-10 bg-white rounded-xl mx-1">সাইন ইন</Link>
-                        <Link href={`/`} className="px-2 w-10 rounded-xl bg-green-500">সাইন আপ</Link>
+                        <Link href={`/signin`} className="px-2 w-10 bg-white rounded-xl mx-1">সাইন ইন</Link>
+                        <Link href={`/signup`} className="px-2 w-10 rounded-xl bg-green-500">সাইন আপ</Link>
                     </div>
                 </div>
                 <div className=" flex gap-1.5 items-center">

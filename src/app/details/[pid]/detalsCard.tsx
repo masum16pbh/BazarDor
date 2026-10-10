@@ -14,7 +14,7 @@ interface IDetals extends I_Item {
 }
 export default async function GET_paraam({ params }: { params: { pid: string } }) {
     const { pid } = await params
-    const res = await fetch(`https://api.api-store.workers.dev/api/bazardor/products/${pid}`)
+    const res = await fetch(`https://openapi.programming-hero.com/api/bazardor/products/${pid}`)
     if (!res) { return (<>Not found</>) }
     const product: IDetals = await res.json()
     let unitBn = ''

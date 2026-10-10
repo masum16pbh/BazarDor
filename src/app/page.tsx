@@ -6,9 +6,10 @@ import Footer from "./components/footer";
 import HeroBaner from "./components/hero";
 import UpDownSection from "./components/updown";
 
-
+// https://openapi.programming-hero.com/api/bazardor
+// https://api.api-store.workers.dev/api/bazardor/products/
 export default async function Home() {
-  const res = await fetch('https://api.api-store.workers.dev/api/bazardor/products/', { cache: "no-store" })
+  const res = await fetch('https://openapi.programming-hero.com/api/bazardor/products/', { cache: "no-store" })
   if (!res.ok) notFound()
   const data = await res.json()
   const products: I_Item[] = data

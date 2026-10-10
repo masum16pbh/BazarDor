@@ -6,7 +6,7 @@ import Selection from "./sortSelect";
 
 const getData = async (cata_slag: string) => {
     "use cache";
-    const res = await fetch(`https://api.api-store.workers.dev/api/bazardor/products?category=${cata_slag}`)
+    const res = await fetch(`https://openapi.programming-hero.com/api/bazardor/products?category=${cata_slag}`)
     return res.json()
 }
 
