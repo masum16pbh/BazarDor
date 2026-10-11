@@ -1,9 +1,10 @@
 import Image from "next/image";
-import logo from "../../public/logo-icon.png"
+import logo from "../../../public/logo-icon.png"
 import Link from "next/link";
 import { Suspense } from "react";
-import Catagorys from "./catagory";
-import MarqueeItem from "./Marque";
+import Catagorys from "../catagory";
+import MarqueeItem from "../Marque";
+import NavUserSection from "./userSecNab";
 export const date = new Date().toLocaleString("bn-BD", { dateStyle: "full" })
 export default function Hader() {
 
@@ -25,9 +26,8 @@ export default function Hader() {
                         </div>
                     </div>
                     <div>
-                        <Link href={`/signin`} className="px-2 w-10 bg-white rounded-xl mx-1">সাইন ইন</Link>
-                        <Link href={`/signup`} className="px-2 w-10 rounded-xl bg-green-500">সাইন আপ</Link>
-                    </div>
+                        <NavUserSection></NavUserSection>
+                        </div>
                 </div>
                 <div className=" flex gap-1.5 items-center">
                     <Link href={`/`}>মূল পাতা</Link>
@@ -39,7 +39,7 @@ export default function Hader() {
 
             </div>
             <div className="my-2">
-            <Suspense><MarqueeItem /></Suspense>
+                <Suspense><MarqueeItem /></Suspense>
             </div>
         </div>
         </>

@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from "react";
-import {Eye, EyeSlash} from "@gravity-ui/icons";
+import { Eye, EyeSlash } from "@gravity-ui/icons";
 
 import { Button, Description, FieldError, Form, Input, InputGroup, Label, TextField } from "@heroui/react";
 import { authClient, signUp } from "@/src/lib/auth-client";
@@ -28,83 +28,79 @@ export default function SineUP() {
     console.log(resData)
 
   };
-     const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(false)
+   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    // clear error as user types
+    setErrors((prev) => ({ ...prev, [e.target.name]: "" }));
+  };
+   const [errors, setErrors] = useState<Record<string, string>>({});
+    const [values, setValues] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+   const validate = () => {
+    const next: Record<string, string> = {};
+
+    if (values.name.length < 3) {
+      next.name = "Name must be at least 3 characters";
+    }
+
+    if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+      next.email = "Please enter a valid email address";
+    }
+
+    if (values.password.length < 8) {
+      next.password = "Password must be at least 8 characters";
+    } else if (!/[A-Z]/.test(values.password)) {
+      next.password = "Password must contain at least one uppercase letter";
+    } else if (!/[0-9]/.test(values.password)) {
+      next.password = "Password must contain at least one number";
+    }
+
+    setErrors(next);
+    return Object.keys(next).length === 0;
+  };
 
   return (
 
     <>
-      <Form
-        className="flex w-96  flex-col gap-4 mx-auto my-auto bg-green-300 p-3 rounded-2xl"
-        render={(props) => <form {...props} data-custom="foo" />}
-        onSubmit={onSubmit}
-      >
-        <TextField
-          isRequired
-          name="name"
-          validate={(value) => {
-            if (value.length < 3) {
-              return "Name must be at least 3 characters";
-            }
-            return null;
-          }}
-        >
-          <Label>Name</Label>
-          <Input placeholder="Your name" />
-          <FieldError />
-        </TextField>
-        <TextField
-          isRequired
-          name="email"
-          type="email"
-          validate={(value) => {
-            if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
-              return "Please enter a valid email address";
-            }
-            return null;
-          }}
-        >
-          <Label>Email</Label>
-          <Input placeholder="your e-mail" />
-          <FieldError />
-        </TextField>
-        <TextField
-          isRequired
-          minLength={8}
+          <form
+      data-custom="foo"
+      onSubmit={onSubmit}
+      onReset={onReset}
+      className="flex flex-col gap-4 mx-auto my-auto bg-white p-3 rounded-2xl shadow-sm w-full max-w-md"
+    >
+        
+        <label>Password</label>
+        <input
           name="password"
-          type="password"
-          validate={(value) => {
-            if (value.length < 8) {
-              return "Password must be at least 8 characters";
-            }
-            if (!/[A-Z]/.test(value)) {
-              return "Password must contain at least one uppercase letter";
-            }
-            if (!/[0-9]/.test(value)) {
-              return "Password must contain at least one number";
-            }
-            return null;
-          }}
-        >
-          <Label>Password</Label>
-          <InputGroup>
+            type={visible ? "text" : "password"}
+            value={values.password}
+            onChange={handleChange}
+            placeholder="········"
+            required
+            minLength={8}
+        />
+          {/* <InputGroup className="flex w-full items-center">
             <InputGroup.Input
-              className="w-full "
-              type={visible ? "text" : "password"}></InputGroup.Input>
-            <InputGroup.Suffix className="pe-0">
-              <Button
-                // isIconOnly
-                // aria-label={isVisible ? "Hide password" : "Show password"}
-                size="sm"
-                variant="ghost"
-                onPress={() => setVisible(!visible)}
+              className="w-full border rounded-2xl"
+              type={visible ? "text" : "password"}
+
+            ></InputGroup.Input>
+            <InputGroup.Suffix className="pe-0 flex items-center justify-center"> */}
+              <button
+                
+                aria-label={visible ? "Hide password" : "Show password"}
+              
+                onClick={() => setVisible(!visible)}
               >
                 {visible ? <Eye className="size-4" /> : <EyeSlash className="size-4" />}
-              </Button>
-            </InputGroup.Suffix>
-          </InputGroup>
+              </button>
+            
           <Description>Must be at least 8 characters with 1 uppercase and 1 number</Description>
-          <FieldError />
-        </TextField>
+          
         <div className="flex gap-2">
           <Button type="submit">
 
