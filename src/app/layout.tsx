@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Footer from "./components/footer";
 import Hader from "./components/navComponent/hader";
+import { Toaster } from "react-hot-toast";
 
 const notoSerifBengali = Noto_Serif_Bengali({
   subsets: ["bengali"],
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         lang="bn"
 
         className={`${notoSerifBengali.variable} min-h-full flex flex-col bg-[#E1E8E1]`}>
+        <Toaster />
         <Hader></Hader>
         {children}
 
