@@ -1,12 +1,12 @@
 "use client"
-
+import React, { useState } from "react";
 import {Eye, EyeSlash} from "@gravity-ui/icons";
 import { signIn } from "@/src/lib/auth-client";
 import { Button, Description, FieldError, Form, Input, InputGroup, Label, TextField } from "@heroui/react";
-import { useState } from "react";
+
 
 export default function SignInPage() {
-    const onSubmit = async (e: SubmitEvent) => {
+    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         const formData = new FormData(e.currentTarget as HTMLFormElement);
