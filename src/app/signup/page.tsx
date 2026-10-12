@@ -38,6 +38,7 @@ export default function SignupForm() {
         email: formData.email,
         password: formData.password,
         name: formData.name,
+        callbackURL: "/signin", 
       },
       {
         onSuccess: (ctx) => {
@@ -48,6 +49,7 @@ export default function SignupForm() {
           setTimeout(() => {
             router.push("/"); 
           }, 1500);
+          
         },
         onError: (ctx) => {
           toast.dismiss(loadingToast);

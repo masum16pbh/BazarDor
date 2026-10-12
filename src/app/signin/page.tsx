@@ -2,10 +2,13 @@
 import React, { useState } from "react";
 import {Eye, EyeSlash} from "@gravity-ui/icons";
 import { signIn } from "@/src/lib/auth-client";
+import { useSearchParams } from "next/navigation";
 import { Button, Description, FieldError, Form, Input, InputGroup, Label, TextField } from "@heroui/react";
 
 
 export default function SignInPage() {
+    const searchParams= useSearchParams()
+     const callbackUrl = searchParams.get('callbackURL') || '/'; 
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
@@ -19,7 +22,7 @@ export default function SignInPage() {
 
         const result = await signIn.email({
             email, password, rememberMe: true,
-            callbackURL: "/"
+            callbackURL: callbackUrl, 
         });
 
         if (result.error) {

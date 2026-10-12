@@ -5,7 +5,8 @@ import { Suspense } from "react";
 import Catagorys from "../catagory";
 import MarqueeItem from "../Marque";
 import NavUserSection from "./userSecNab";
-export const date = new Date().toLocaleString("bn-BD", { dateStyle: "full" })
+import Today from "./date";
+
 export default function Hader() {
 
     return (
@@ -18,7 +19,7 @@ export default function Hader() {
                             <h2>বাজার দর</h2>
                             <p>
                                 <Suspense fallback="  ">
-                                    {date}
+                                    <Today></Today>
 
 
                                 </Suspense>
