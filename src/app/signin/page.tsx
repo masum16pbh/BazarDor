@@ -33,7 +33,7 @@ export default function SignInPage() {
         <>
             <div className="my-auto">
                 <Form
-                    className="flex w-96  flex-col gap-4 mx-auto  bg-green-300 p-3 rounded-2xl"
+                    className="flex w-96  flex-col gap-4 mx-auto  bg-white p-3 rounded-2xl"
                     render={(props) => <form {...props} data-custom="foo" />}
                     onSubmit={onSubmit}
                 >
@@ -50,8 +50,8 @@ export default function SignInPage() {
                             return null;
                         }}
                     >
-                        <Label>Email</Label>
-                        <Input placeholder="your e-mail" />
+                        <Label>Email</Label><br/>
+                        <Input placeholder="your e-mail" className="px-2 w-full border rounded-[4] border-gray-300"/>
                         <FieldError />
                     </TextField>
                     <TextField
@@ -73,7 +73,7 @@ export default function SignInPage() {
                         }}
                     >
                         <Label>Password</Label>
-                        <InputGroup aria-label="password section">
+                        <InputGroup aria-label="password section " className="flex gap-2 px-2 border rounded-[4] border-gray-300">
                             <InputGroup.Input
                                 className="w-full "
                                 type={visible ? "text" : "password"}></InputGroup.Input>

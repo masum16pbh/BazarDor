@@ -4,22 +4,22 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
 import toast, { Toaster } from "react-hot-toast";
-import { authClient } from "@/src/lib/auth-client"; // আপনার প্রজেক্টের সঠিক পাথ নিশ্চিত করুন
+import { authClient, signIn } from "@/src/lib/auth-client"; // আপনার প্রজেক্টের সঠিক পাথ নিশ্চিত করুন
 
 export default function SignupForm() {
   const router = useRouter();
   
-  // পাসওয়ার্ড ভিজিবিলিটি স্টেট
+
   const [showPassword, setShowPassword] = useState(false);
   
-  // ফর্ম ডেটা স্টেট
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
   });
 
-  // ✅ ইনপুটের পরিবর্তনের জন্য পারফেক্ট এবং সঠিক টাইপ
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
@@ -55,6 +55,17 @@ export default function SignupForm() {
         }
       }
     );
+  };
+
+  const handelGoogleSignin = async ()=>{
+const data = await signIn.social({
+  provider: "google"
+})
+  };
+  const handleGithubSignin = async ()=>{
+    const data = await signIn.social({
+      provider: "github"
+    })
   };
 
   return (
@@ -146,7 +157,16 @@ export default function SignupForm() {
                 Sign Up
               </button>
             </div>
+            <div className="flex items-center">
+            <hr className="flex-1" />
+            <p>OR</p>
+            <hr className="flex-1"/>
+            </div>
           </form>
+            <div className="flex gap-2">
+              <p onClick={handelGoogleSignin} className=" bg-green-300 p-3 rounded-2xl">Signin with google</p>
+              <p onClick={handleGithubSignin} className=" bg-green-300 p-3 rounded-2xl">Signin with github</p>
+            </div>
         </div>
       </div>
     </>

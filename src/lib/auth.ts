@@ -15,14 +15,28 @@ export const auth = betterAuth({
             clientId: process.env.BETTER_AUTH_GOOGLE_CLIENT_ID as string, 
             clientSecret: process.env.BETTER_AUTH_GOOGLE_CLIENT_SECRET as string, 
         }, 
+        github: {
+            clientId: process.env.GITHUB_CLIENT_ID as string,
+            clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
+        }
     },
   database: mongodbAdapter(db, {
     client,
   }),
-  
+
+
+  advanced: {
+    database: {
+      // Better Auth কে মঙ্গোডিবির ObjectId বানাতে নিষেধ করে কাস্টম র্যান্ডম স্ট্রিং আইডি দিতে বাধ্য করা হচ্ছে
+      generateId: () => crypto.randomUUID(), 
+    }
+  },
+   
+    account: {
     accountLinking: {
       enabled: true,
       disableImplicitLinking: false,
-      trustedProviders: ["google", "github"]
+      trustedProviders: ["google", "email-password"] 
+    }
   }
 });
