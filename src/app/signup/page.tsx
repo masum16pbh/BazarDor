@@ -3,8 +3,11 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
+import { LiaGithub } from "react-icons/lia";
+import { FcGoogle } from "react-icons/fc";
 import toast, { Toaster } from "react-hot-toast";
 import { authClient, signIn } from "@/src/lib/auth-client"; // আপনার প্রজেক্টের সঠিক পাথ নিশ্চিত করুন
+import Link from "next/link";
 
 export default function SignupForm() {
   const router = useRouter();
@@ -74,12 +77,13 @@ const data = await signIn.social({
     <>
       <Toaster position="top-center" reverseOrder={false} />
       
-      <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 sm:px-6 lg:px-8">
+      <div className="flex min-h-screen items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8 rounded-xl bg-white p-8 shadow-md border border-gray-100">
           <div>
             <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
-              Create your account
+              অ্যাকাউন্ট তৈরি করুন
             </h2>
+            <p className="text-center"> বিনা খরচে সাইন আপ করে সব বিস্তারিত দাম দেখুন।</p>
           </div>
           
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
@@ -87,7 +91,7 @@ const data = await signIn.social({
               {/* Name Input */}
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                  Full Name
+                  নাম
                 </label>
                 <input
                   id="name"
@@ -104,7 +108,7 @@ const data = await signIn.social({
               {/* Email Input */}
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                  Email address
+                 ইমেইল
                 </label>
                 <input
                   id="email"
@@ -122,7 +126,7 @@ const data = await signIn.social({
               {/* Password Input with Visibility Toggle */}
               <div>
                 <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
-                  Password
+                  পাসওয়ার্ড
                 </label>
                 <div className="relative">
                   <input
@@ -156,21 +160,31 @@ const data = await signIn.social({
                 type="submit"
                 className="group relative flex w-full justify-center rounded-lg bg-indigo-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-colors"
               >
-                Sign Up
+                অ্যাকাউন্ট তৈরি করুন
               </button>
             </div>
             <div className="flex items-center">
             <hr className="flex-1" />
-            <p>OR</p>
+            <p>অথবা</p>
             <hr className="flex-1"/>
             </div>
           </form>
-            <div className="flex gap-2">
-              <p onClick={handelGoogleSignin} className=" bg-green-300 p-3 rounded-2xl">Signin with google</p>
-              <p onClick={handleGithubSignin} className=" bg-green-300 p-3 rounded-2xl">Signin with github</p>
+            <div className="flex gap-2 justify-center">
+              <p onClick={handelGoogleSignin} className="flex text-xs gap-1 border border-slate-500 p-3 rounded-2xl"> <FcGoogle/> Google দিয়ে চালিয়ে যান</p>
+              <p onClick={handleGithubSignin} className="flex text-xs gap-1 border border-slate-500 p-3 rounded-2xl"> <LiaGithub/> GitHub দিয়ে চালিয়ে যান</p>
+            </div>
+            <div className="flex gap-1 justify-center">
+
+            <p>অ্যাকাউন্ট আছে?</p>
+                            <Link href="/signin" className="text-green-500 underline"> সাইন ইন করুন </Link>
             </div>
         </div>
+
       </div>
+      <div className="text-center mt-10">
+        <Link href="/">← হোম পেজে ফিরে যান</Link>
+      </div>
+
     </>
   );
 }
