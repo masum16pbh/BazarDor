@@ -30,6 +30,18 @@ export default function SignInPage() {
         }
         console.log(result.data)
     };
+      const handelGoogleSignin = async ()=>{
+    const data = await signIn.social({
+      provider: "google",
+      callbackURL: callbackUrl
+    })
+      };
+      const handleGithubSignin = async ()=>{
+        const data = await signIn.social({
+          provider: "github",
+          callbackURL: callbackUrl
+        })
+      };
     const [visible, setVisible] = useState(false)
     return (
 
@@ -104,6 +116,11 @@ export default function SignInPage() {
                             Reset
                         </Button>
                     </div>
+                <div className="flex gap-2 justify-center ">
+                    <p onClick={handelGoogleSignin} className=" bg-green-300 p-3 rounded-2xl">Signin with google</p>
+              <p onClick={handleGithubSignin} className=" bg-green-300 p-3 rounded-2xl">Signin with github</p>
+            
+                </div>
                 </Form>
             </div>
         </>
