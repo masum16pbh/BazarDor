@@ -32,6 +32,7 @@ export default function NavUserSection() {
       >
         লগআউট
       </button>
+      <Link href="/profile">প্রোফাইল</Link>
     </div>
   </>
     )
